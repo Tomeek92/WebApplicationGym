@@ -1,7 +1,13 @@
+using WebApplicationGym.Services;
+using WebApplicationGym.Services.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IDietGymServices, DietGymServices>();
+builder.Services.AddScoped<IExerciseGymService,ExerciseGymServices>();  
+builder.Services.AddScoped<IUserGymService, UserGymServices>();
 
 var app = builder.Build();
 

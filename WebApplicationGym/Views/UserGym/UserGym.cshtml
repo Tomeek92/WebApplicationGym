@@ -1,7 +1,48 @@
-﻿
+﻿@using WebApplicationGym.Models.Gym
+@model UserGym
+
 @{
     ViewData["Title"] = "UserGym";
 }
+<head>
+<link rel="stylesheet" href="~/css/styleCSS.css" type="text/css">
+</head>
 
-<h1>UserGym</h1>
+
+@using (Html.BeginForm("UserGym", "UserGym", FormMethod.Post, new { @class = "formularz" }))
+{
+    <div class="formularz">
+        <h1>Dodaj użytkownika</h1>
+        <div class="pole">
+            <!-- ... reszta formularza ... -->
+        </div>
+    </div>
+
+
+    <div class="pole">
+        <span>Imię</span>@Html.TextBoxFor(x => x.Name)
+    </div>
+
+    <div class="pole">
+        <span>Nazwisko</span>@Html.TextBoxFor(x => x.Surname)
+    </div>
+
+    <div class="pole">
+        <span>Email:</span> @Html.TextBoxFor(x => x.Email)
+    </div>
+
+    <div class="pole">
+        <span>Numer Telefonu:</span> @Html.TextBoxFor(x => x.PhoneNumber)
+    </div>
+
+    <div class="pole">
+        <span>Adres</span> @Html.TextBoxFor(x => x.Address)
+    </div>
+    <div class="pole">
+        <button type="submit">Dodaj</button>
+    </div>
+
+}
+
+
 

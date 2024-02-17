@@ -1,7 +1,39 @@
-﻿
+﻿@using WebApplicationGym.Models.Gym
+@model DietGym
 @{
     ViewData["Title"] = "DietGym";
 }
+<head>
+    <link rel="stylesheet" href="~/css/DietGymCSS.css" type="text/css">
+</head>
 
-<h1>DietGym</h1>
+@using (Html.BeginForm("DietGym", "DietGym", FormMethod.Post, new { @class = "formularz" }))
+{
+    <div class="formularz">
+        <h1>Dodaj dietę</h1>
+        <div class="pole">
+            <!-- ... reszta formularza ... -->
+        </div>
+    </div>
+
+    <div class="pole">
+        <span>Nazwa diety</span>@Html.TextBoxFor(x => x.Name)
+    </div>
+
+    <div class="pole">
+        <span>Opis diety</span>@Html.TextBoxFor(x => x.Description)
+    </div>
+
+    <div class="pole">
+        <span>Liczba kalorii</span> @Html.TextBoxFor(x => x.Calories)
+    </div>
+
+    <div class="pole">
+        <span>Produkty</span> @Html.TextBoxFor(x => x.ProductToEat)
+    </div>
+
+    <div class="pole">
+        <button type="submit">Dodaj</button>
+    </div>
+}
 

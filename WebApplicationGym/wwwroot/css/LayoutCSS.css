@@ -1,0 +1,21 @@
+﻿body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+
+.navbar-nav {
+    background-color: #f5f5f5;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 10px 20px;
+}
+
+    .navbar-nav .nav-item a {
+        color: #6e5494;
+        font-weight: bold;
+    }
+
+        .navbar-nav .nav-item a:hover {
+            color: #574482;
+        }

@@ -10,7 +10,7 @@
 
         public int Weight { get; set; } //obciążenie 
 
-        public int Series {  get; set; }    
+          
 
     }
 }

@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Mvc;
 using WebApplicationGym.Models.Gym;
+using WebApplicationGym.Models.Validators;
 using WebApplicationGym.Services.Interfaces;
 
 namespace WebApplicationGym.Controllers
@@ -15,11 +17,24 @@ namespace WebApplicationGym.Controllers
         {
             return View();
         }
-        
+        [HttpGet]
+        [Route("User-gym")]
         public IActionResult UserGym()
         {
             return View();
             
+        }
+        [HttpPost]
+        [Route("User-gym")]
+        public IActionResult UserGym(UserGym body)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View(body);
+            }
+            var validator = new UserGymValidator();
+            validator.ValidateAndThrow(body);
+            return View(body);
         }
        
         

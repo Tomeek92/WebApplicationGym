@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using WebApplicationGym;
 using WebApplicationGym.Services;
 using WebApplicationGym.Services.Interfaces;
 
@@ -8,6 +10,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IDietGymServices, DietGymServices>();
 builder.Services.AddScoped<IExerciseGymService,ExerciseGymServices>();  
 builder.Services.AddScoped<IUserGymService, UserGymServices>();
+// Add db Context 
+builder.Services.AddDbContext<WebApplicationGymDbContext>(options =>
+ options.UseSqlServer(builder.Configuration.GetConnectionString("WebApplicationGym")));
+
 
 var app = builder.Build();
 

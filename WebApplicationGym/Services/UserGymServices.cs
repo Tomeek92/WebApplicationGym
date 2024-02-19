@@ -5,9 +5,21 @@ namespace WebApplicationGym.Services
 {
     public class UserGymServices : IUserGymService
     {
-        public Guid Save(UserGym user)
+        private readonly WebApplicationGymDbContext _context;
+        public UserGymServices(WebApplicationGymDbContext user)
         {
-            throw new NotImplementedException();
+            _context = user;
+        }
+        public List<UserGym> GetAll()
+        {
+            var users = _context.userGyms.ToList();
+            return users;
+        }
+        public int Save(UserGym user)
+        {
+            _context.Add(user);
+            _context.SaveChanges();
+            return 1;
         }
     }
 }

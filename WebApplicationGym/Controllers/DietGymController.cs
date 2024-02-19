@@ -31,6 +31,8 @@ namespace WebApplicationGym.Controllers
             var validator = new DietGymValidator();
             validator.ValidateAndThrow(body);
 
+            var id = _dietGym.Save(body);
+            ViewBag.SuccessMessage = "Twoja dieta została dodana";
             return RedirectToAction("DietGym");
         }
 

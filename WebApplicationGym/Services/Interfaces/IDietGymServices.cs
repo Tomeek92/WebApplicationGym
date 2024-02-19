@@ -5,6 +5,8 @@ namespace WebApplicationGym.Services.Interfaces
 {
     public interface IDietGymServices
     {
-        Guid Save(DietGym diet);
+        public int Save(DietGym dietGym);
+        List<DietGym> GetAll();
+        
     }
 }

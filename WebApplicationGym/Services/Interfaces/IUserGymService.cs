@@ -4,6 +4,7 @@ namespace WebApplicationGym.Services.Interfaces
 {
     public interface IUserGymService
     {
-      public Guid Save(UserGym user);
+      public int Save(UserGym user);
+      List<UserGym> GetAll();
     }
 }

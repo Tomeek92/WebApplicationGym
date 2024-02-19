@@ -1,0 +1,17 @@
+﻿@using WebApplicationGym.Models.Gym
+@model List<DietGym>
+@{
+    ViewData["Title"] = "List";
+}
+
+<h2>Twoje Diety</h2>
+
+<ul>
+    @foreach (var diet in Model)
+    {
+        <li>@diet.Name</li> 
+        <li>@diet.Description</li>
+        <li>@diet.Calories</li>
+    }
+</ul>
+

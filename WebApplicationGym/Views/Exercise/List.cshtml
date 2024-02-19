@@ -1,0 +1,20 @@
+﻿@using WebApplicationGym.Models.Gym
+@model List<ExerciseGym>
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>Twoje ćwiczenia</h1>
+
+<ul>
+   
+
+    @foreach (var exerciseList in Model)
+    {
+        <li>@exerciseList.Name</li>
+        <li>@exerciseList.Description</li>
+        <li>@exerciseList.SeriesOfExercise</li>
+    }
+
+</ul>
+

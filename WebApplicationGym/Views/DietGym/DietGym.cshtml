@@ -6,6 +6,15 @@
 <head>
     <link rel="stylesheet" href="~/css/DietGymCSS.css" type="text/css">
 </head>
+@{
+    var message = ViewBag.SuccessMessage;
+    if (!string.IsNullOrEmpty(message))
+    {
+        <div class="alert alert-success">
+            @message
+        </div>
+    }
+}
 
 @using (Html.BeginForm("DietGym", "DietGym", FormMethod.Post, new { @class = "formularz" }))
 {

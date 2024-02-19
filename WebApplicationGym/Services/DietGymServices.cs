@@ -5,9 +5,21 @@ namespace WebApplicationGym.Services
 {
     public class DietGymServices : IDietGymServices
     {
-        public Guid Save(DietGym diet)
+        private readonly WebApplicationGymDbContext _context;
+        public DietGymServices(WebApplicationGymDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+        }
+        public List<DietGym> GetAll()
+        {
+            var dietGym = _context.dietGyms.ToList();
+            return dietGym; 
+        }
+        public int Save(DietGym dietGym)
+        {
+            _context.Add(dietGym);
+            _context.SaveChanges();
+            return 1;
         }
     }
 }

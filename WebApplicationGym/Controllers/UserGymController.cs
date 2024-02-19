@@ -34,6 +34,8 @@ namespace WebApplicationGym.Controllers
             }
             var validator = new UserGymValidator();
             validator.ValidateAndThrow(body);
+            var id = _userGymService.Save(body);
+            ViewBag.SuccessMessage = "Twoje konto zostało utworzone";
             return View(body);
         }
        

@@ -35,7 +35,11 @@ namespace WebApplicationGym.Controllers
             }
             var validator = new ExerciseGymValidator();
             validator.ValidateAndThrow(body);
-            return View(body);
+
+            var id = _exerciseGymService.Save(body);
+            ViewBag.SuccessMessage = "Twoje ćwiczenie zostało dodane";
+
+            return RedirectToAction("ExerciseGym");
         }
         
     }

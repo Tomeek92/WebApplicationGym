@@ -10,11 +10,24 @@ namespace WebApplicationGym.Controllers
             {
                 _diet = diet;
             }
-            public IActionResult List()
-            {
-                var dietList = _diet.GetAll();
-                return View(dietList);
-            }
+        [HttpGet]
+        public IActionResult List()
+        {
+            var dietList=_diet.GetAll();
+            return View(dietList);
+        }
+        [HttpGet]
+        public IActionResult Details(Guid Id)
+        {
+            var dietDetails = _diet.Get(Id);
+            return View(dietDetails);  
+        }
+        [HttpPost]
+        public IActionResult Delete(Guid Id)
+        {
+            _diet.Delete(Id);
+            return RedirectToAction("List");
+        }
         
     }
 }

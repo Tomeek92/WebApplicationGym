@@ -7,11 +7,28 @@
 <h2>Twoje Diety</h2>
 
 <ul>
-    @foreach (var diet in Model)
+    @if (Model != null)
     {
-        <li>@diet.Name</li> 
-        <li>@diet.Description</li>
-        <li>@diet.Calories</li>
+        @foreach (var diet in Model)
+        {
+            <li>
+                <span>@diet.Name</span>
+                <span>@diet.Description</span>
+                <span>@diet.Calories</span>
+                <a href="@Url.Action("Details","Diet",new {Id=diet.Id})">Szczegóły</a>
+                @using (@Html.BeginForm("Delete", "Diet", FormMethod.Post))
+                {
+                    <input type ="hidden" name="Id" value="@diet.Id" />
+
+                    <button type ="submit">Usuń</button>
+                }
+
+            </li>
+        }
+    }
+    else
+    {
+        <p>Brak danych do wyświetlenia.</p>
     }
 </ul>
 

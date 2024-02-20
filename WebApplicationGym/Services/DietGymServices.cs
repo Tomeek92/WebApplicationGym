@@ -10,6 +10,23 @@ namespace WebApplicationGym.Services
         {
             _context = context;
         }
+
+        public Guid Delete(Guid Id)
+        {
+            var dietGym = _context.dietGyms.Find(Id);
+            _context.dietGyms.Remove(dietGym);
+            _context.SaveChanges();
+            return Id;
+        }
+       
+
+        public DietGym Get(Guid Id)
+        {
+            var dietGym = _context.dietGyms.Find(Id);
+            
+            return dietGym;
+        }
+
         public List<DietGym> GetAll()
         {
             var dietGym = _context.dietGyms.ToList();

@@ -10,10 +10,24 @@ namespace WebApplicationGym.Controllers
         {
             _exerciseGymService = exerciseGym;
         }
+        [HttpGet]
         public IActionResult List()
         {
             var exerciseList = _exerciseGymService.GetAll();
             return View(exerciseList);
         }
+        [HttpGet]
+        public IActionResult Details(Guid Id)
+        {
+            var exerciseDetails = _exerciseGymService.Get(Id);
+           return View(exerciseDetails);
+        }
+        [HttpPost]
+        public IActionResult Delete(Guid Id) 
+        {
+            var exerciseDelete = _exerciseGymService.Delete(Id);
+            return RedirectToAction("List");
+        }
+
     }
 }

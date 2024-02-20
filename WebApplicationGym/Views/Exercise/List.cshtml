@@ -10,10 +10,19 @@
    
 
     @foreach (var exerciseList in Model)
-    {
-        <li>@exerciseList.Name</li>
-        <li>@exerciseList.Description</li>
-        <li>@exerciseList.SeriesOfExercise</li>
+    {  
+        <li>
+        <span>@exerciseList.Name</span>
+        <span>@exerciseList.Description</span>
+        <span>@exerciseList.SeriesOfExercise</span>
+            <a href="@Url.Action("Details","Exercise",new {Id=exerciseList.Id})">Szczegóły</a>
+            @using (@Html.BeginForm("Delete", "Exercise", FormMethod.Post))
+            {
+                <input type="hidden" name="Id" value="@exerciseList.Id" />
+
+                <button type="submit">Usuń</button>
+            }
+        </li>
     }
 
 </ul>

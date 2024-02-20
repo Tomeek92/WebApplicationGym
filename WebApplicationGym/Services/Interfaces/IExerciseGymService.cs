@@ -6,5 +6,7 @@ namespace WebApplicationGym.Services.Interfaces
     {
         public int Save(ExerciseGym exercise);
         List<ExerciseGym> GetAll();
+        ExerciseGym Get(Guid Id);
+        Guid Delete(Guid Id);
     }
 }

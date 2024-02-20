@@ -10,6 +10,13 @@ namespace WebApplicationGym.Services
         {
             _exerciseGymService = exerciseGym;
         }
+
+        public ExerciseGym Get(Guid Id)
+        {
+            var exerciseGym = _exerciseGymService.exerciseGyms.Find(Id);
+            return exerciseGym;
+        }
+
         public List<ExerciseGym> GetAll() 
         {
             var exerciseGym = _exerciseGymService.exerciseGyms.ToList();
@@ -20,6 +27,14 @@ namespace WebApplicationGym.Services
             _exerciseGymService.Add(exercise);
             _exerciseGymService.SaveChanges();
             return 1;
+        }
+       
+        public Guid Delete(Guid Id)
+        {
+            var exerciseGym = _exerciseGymService.exerciseGyms.Find(Id);
+            _exerciseGymService.exerciseGyms.Remove(exerciseGym);
+            _exerciseGymService.SaveChanges();
+            return Id;
         }
     }
 }

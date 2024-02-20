@@ -7,6 +7,8 @@ namespace WebApplicationGym.Services.Interfaces
     {
         public int Save(DietGym dietGym);
         List<DietGym> GetAll();
+        DietGym Get(Guid Id);
+        Guid Delete(Guid Id);
         
     }
 }

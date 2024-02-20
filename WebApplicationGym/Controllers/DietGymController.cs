@@ -33,8 +33,10 @@ namespace WebApplicationGym.Controllers
 
             var id = _dietGym.Save(body);
             ViewBag.SuccessMessage = "Twoja dieta została dodana";
-            return RedirectToAction("DietGym");
+            return View(body);
         }
+        
+        
 
       
     }

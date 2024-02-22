@@ -1,0 +1,27 @@
+﻿@using WebApplicationGym.Models.Logins
+@model Login
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+<head>
+    <link rel="stylesheet" href="~/css/UserGymCSS.css" type="text/css">
+</head>
+@using (Html.BeginForm("Login", "UserGym", FormMethod.Post, new { @class = "formularz" }))
+{
+    <div class="formularz">
+        <h1>Zaloguj się</h1>
+        <div class="pole">
+         
+        </div>
+    </div>
+    @Html.ValidationSummary()
+
+<div class="pole">
+    <span>Login</span>@Html.TextBoxFor(x => x.UserName)
+</div>
+<div class="pole">
+    <span>Hasło</span>@Html.TextBoxFor(x => x.Password)
+</div>
+}

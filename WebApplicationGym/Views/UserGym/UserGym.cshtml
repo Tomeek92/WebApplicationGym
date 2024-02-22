@@ -1,5 +1,5 @@
-﻿@using WebApplicationGym.Models.Gym
-@model UserGym
+﻿@using WebApplicationGym.Models.Register
+@model Register
 
 @{
     ViewData["Title"] = "UserGym";
@@ -31,22 +31,20 @@
     <div class="pole">
         <span>Imię</span>@Html.TextBoxFor(x => x.Name)
     </div>
-
     <div class="pole">
-        <span>Nazwisko</span>@Html.TextBoxFor(x => x.Surname)
+        <span>Nazwisko:</span> @Html.TextBoxFor(x => x.Surname)
     </div>
-
+    <div class="pole">
+        <span>Hasło</span>@Html.PasswordFor(x => x.Password)
+    </div>
+    
     <div class="pole">
         <span>Email:</span> @Html.TextBoxFor(x => x.Email)
     </div>
-
     <div class="pole">
-        <span>Numer Telefonu:</span> @Html.TextBoxFor(x => x.PhoneNumber)
+        <span>Address:</span> @Html.TextBoxFor(x => x.Address)
     </div>
 
-    <div class="pole">
-        <span>Adres</span> @Html.TextBoxFor(x => x.Address)
-    </div>
     <div class="pole">
         <button type="submit">Dodaj</button>
     </div>

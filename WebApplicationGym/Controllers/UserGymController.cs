@@ -1,20 +1,25 @@
-﻿using FluentValidation;
+﻿
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebApplicationGym.Models.Gym;
-using WebApplicationGym.Models.Validators;
-using WebApplicationGym.Services.Interfaces;
+
 
 namespace WebApplicationGym.Controllers
 {
     public class UserGymController : Controller
     {
-        private readonly IUserGymService _userGymService;
-        public UserGymController(IUserGymService userGym)
+      
+        private readonly UserManager<UserGym> _userManager;
+        private readonly SignInManager<UserGym> _signInManager;
+        public UserGymController(UserManager<UserGym> userManager,SignInManager<UserGym> signInManager)
         {
-            _userGymService = userGym; 
+            _userManager = userManager;  
+            _signInManager = signInManager;
         }
+
         public IActionResult Index()
         {
+
             return View();
         }
         [HttpGet]
@@ -26,20 +31,69 @@ namespace WebApplicationGym.Controllers
         }
         [HttpPost]
         [Route("User-gym")]
-        public IActionResult UserGym(UserGym body)
+        public async Task<IActionResult> UserGym(Models.Register.Register body)
         {
             if(!ModelState.IsValid)
             {
                 return View(body);
             }
-            var validator = new UserGymValidator();
-            validator.ValidateAndThrow(body);
-            var id = _userGymService.Save(body);
+           
+            
             ViewBag.SuccessMessage = "Twoje konto zostało utworzone";
+            var newUserGym = new UserGym
+            {
+                UserName = body.Name,
+                Email = body.Email,
+                Name = body.Name,
+                Address = body.Address,
+                Surname = body.Surname,
+                Password = body.Password
+            };
+            
+           var result = await _userManager.CreateAsync(newUserGym, body.Password);
+            if (result.Succeeded)
+            {
+                // Użytkownik został pomyślnie utworzony
+            }
+            else
+            {
+                // Coś poszło nie tak, wyświetl błędy
+                foreach (var error in result.Errors)
+                {
+                    Console.WriteLine(error.Description);
+                }
+            }
+
             return View(body);
         }
-       
-        
+        [HttpPost]
+        public async Task <IActionResult> Login(Models.Logins.Login login)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(login);
+            }
+         await _signInManager.PasswordSignInAsync(login.UserName, login.Password, false, false);
+
+return RedirectToAction("Index","Home");
+
+        }
+        [HttpGet]
+        public IActionResult Login()
+        {
+            TempData["Message"] = "Zostałeś zalogowany";
+            return View();  
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            TempData["Message"] = "Zostałeś wylogowany";
+            return RedirectToAction("Index", "Home");
+        }
+
+
+
 
 
     }

@@ -27,21 +27,34 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Polityka prywatności</a>
                         </li>
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="UserGym" asp-action="Logout">Wyloguj</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="DietGym" asp-action="DietGym">Dodaj dietę</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="ExerciseGym" asp-action="ExerciseGym">Dodaj ćwiczenie</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Diet" asp-action="List">Twoje Diety</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Exercise" asp-action="List">Twoje ćwiczenia</a>
+                            </li>
+                        }
+                        else
+                        {
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="UserGym" asp-action="UserGym">Utwórz konto</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="UserGym" asp-action="Login">Zaloguj</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="DietGym" asp-action="DietGym">Dodaj dietę</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ExerciseGym" asp-action="ExerciseGym">Dodaj ćwiczenie</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Diet" asp-action="List">Twoje Diety</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Exercise" asp-action="List">Twoje ćwiczenia</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="UserGym" asp-action="UserGym">Utwórz konto</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using WebApplicationGym.Models.Gym;
 
 namespace WebApplicationGym
 {
-    public class WebApplicationGymDbContext : DbContext
+    public class WebApplicationGymDbContext : IdentityDbContext<UserGym>
     {
         public WebApplicationGymDbContext(DbContextOptions options) : base(options)
         {

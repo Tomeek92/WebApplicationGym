@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Diagnostics;
-using WebApplicationGym.Models.Gym;
+﻿using WebApplicationGym.Models.Gym;
 
 namespace WebApplicationGym.Services.Interfaces
 {

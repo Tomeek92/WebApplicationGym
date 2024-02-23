@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
 using WebApplicationGym.Models.Gym;
+using WebApplicationGym.Models.Logins;
 using WebApplicationGym.Models.Register;
 
 
@@ -13,13 +14,16 @@ namespace WebApplicationGym.Controllers
     {
       
         private readonly UserManager<UserGym> _userManager;
-        public UserGymController(UserManager<UserGym> userManager)
+        private readonly SignInManager<UserGym> _signInManager;
+        public UserGymController(UserManager<UserGym> userManager,SignInManager<UserGym> signInManager)
         {
             _userManager = userManager;  
+            _signInManager = signInManager;
         }
 
         public IActionResult Index()
         {
+
             return View();
         }
         [HttpGet]
@@ -67,27 +71,33 @@ namespace WebApplicationGym.Controllers
             return View(body);
         }
         [HttpPost]
-        public IActionResult Login(Login login)
+        public async Task <IActionResult> Login(Models.Logins.Login login)
         {
             if (!ModelState.IsValid)
             {
                 return View(login);
             }
-            return RedirectToAction("Index", "Home");
+         await _signInManager.PasswordSignInAsync(login.UserName, login.Password, false, false);
+
+return RedirectToAction("Index","Home");
+
         }
         [HttpGet]
         public IActionResult Login()
         {
+            TempData["Message"] = "Zostałeś zalogowany";
             return View();  
         }
-        
-        public IActionResult Logout()
+
+        public async Task<IActionResult> Logout()
         {
-            return View();
+            await _signInManager.SignOutAsync();
+            TempData["Message"] = "Zostałeś wylogowany";
+            return RedirectToAction("Index", "Home");
         }
-      
-       
-        
+
+
+
 
 
     }

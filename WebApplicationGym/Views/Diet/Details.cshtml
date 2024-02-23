@@ -3,8 +3,10 @@
 @{
     ViewData["Title"] = "Details";
 }
-
-<h1>Details</h1>
-<h2>@Model.Name</h2>
-<p>@Model.Description</p>
-<p>@Model.Calories</p>
+<head>
+    <link rel="stylesheet" href="~/css/HomeCSS.css" type="text/css">
+</head>
+<h1>Twoje zapisane diety</h1>
+<span>@Model.Name</span>
+<span>@Model.Description</span>
+<span>@Model.Calories</span>

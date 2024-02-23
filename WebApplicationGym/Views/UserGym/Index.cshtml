@@ -2,6 +2,15 @@
 @{
     ViewData["Title"] = "Index";
 }
+@{
+    var message = ViewBag.SuccessMessage;
+    if (!string.IsNullOrEmpty(message))
+    {
+        <div class="alert alert-success">
+            @message
+        </div>
+    }
+}
 
 <h1>User Gym Index</h1>
 

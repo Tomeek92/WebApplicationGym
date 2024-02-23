@@ -1,6 +1,5 @@
 ﻿using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
-using System.Drawing.Text;
 using WebApplicationGym.Models.Gym;
 using WebApplicationGym.Models.Validators;
 using WebApplicationGym.Services.Interfaces;

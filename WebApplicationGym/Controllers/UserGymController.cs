@@ -1,11 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
 using WebApplicationGym.Models.Gym;
-using WebApplicationGym.Models.Logins;
-using WebApplicationGym.Models.Register;
 
 
 namespace WebApplicationGym.Controllers

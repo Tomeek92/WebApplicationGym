@@ -1,11 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WebApplicationGym;
+using WebApplicationGym.Models.Gym;
 using WebApplicationGym.Services;
 using WebApplicationGym.Services.Interfaces;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using WebApplicationGym.Models.Gym;
-using WebApplicationGym.Models.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 

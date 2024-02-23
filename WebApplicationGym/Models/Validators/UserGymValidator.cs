@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using Microsoft.CodeAnalysis.Completion;
 using WebApplicationGym.Models.Gym;
 
 namespace WebApplicationGym.Models.Validators
